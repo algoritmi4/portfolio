@@ -1,13 +1,13 @@
+## Production link:
+
+https://algoritmi4-portfolio.netlify.app
+
 ## Built With
 
 - React.js
 - Three.js
 - Framer Motion
 - TailwindCSS
-
-## Live Demo
-
-- Click [here](https://shaq-portfolio.netlify.app/) to view the live demo.
 
 ## Getting Started
 
