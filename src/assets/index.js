@@ -44,7 +44,7 @@ import dcc from './company/dcc.png';
 import kelhel from './company/kelhel.png';
 import microverse from './company/microverse.png';
 
-import mevent from './projects/mevent.png';
+import mevent from './projects/MEVENT.png';
 import expertSend from './projects/expertsSend.png';
 import champacademy from './projects/champacademy.png';
 import coinzone from './projects/coinzone.png';
