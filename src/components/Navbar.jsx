@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styles } from '../styles';
 import { navLinks } from '../constants';
@@ -8,6 +8,14 @@ const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
 
+  useEffect(() => {
+    if (toggle) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [toggle]);
+
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center fixed 
@@ -15,26 +23,26 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
-          className="flex items-center gap-2"
+          className="lg:text-[21px] text-[16px] flex items-center gap-2"
           onClick={() => {
             setActive('');
             window.scrollTo(0, 0);
           }}>
-          <p className="text-[21px] font-medium font-mova uppercase tracking-[3px] text-eerieBlack">
+          <p className="font-medium font-mova uppercase tracking-[3px] text-eerieBlack">
             {`</>`}
           </p>
 
-          <p className="text-[21px] font-medium font-mova uppercase tracking-[3px] text-eerieBlack">
+          <p className="font-medium font-mova uppercase tracking-[3px] text-eerieBlack">
             Algoritmi4
           </p>
         </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-14 mt-2">
+        <ul className="list-none hidden sm:flex flex-row lg:gap-14 mt-2 gap-6">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
               className={`${
                 active === nav.title ? 'text-french' : 'text-eerieBlack'
-              } hover:text-taupe text-[21px] font-medium font-mova 
+              } hover:text-taupe lg:text-[21px] text-[16px] font-medium font-mova 
                 uppercase tracking-[3px] cursor-pointer nav-links`}
               onClick={() => setActive(nav.title)}>
               <a href={`#${nav.id}`}>{nav.title}</a>
@@ -42,50 +50,43 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* mobile */}
         <div className="sm:hidden flex flex-1 w-screen justify-end items-center">
-          {toggle ? (
-            <div
-              className={`p-6 bg-flashWhite opacity-[0.98] absolute 
-                top-0 left-0 w-screen h-[100vh] z-10 menu ${
-                  toggle ? 'menu-open' : 'menu-close'
-                }`}>
-              <div className="flex justify-end">
-                <img
-                  src={close}
-                  alt="close"
-                  className="w-[22px] h-[22px] object-contain cursor-pointer"
-                  onClick={() => setToggle(!toggle)}
-                />
-              </div>
-              <ul
-                className="list-none flex flex-col -gap-[1rem] 
-                items-start justify-end mt-[10rem] -ml-[35px]">
-                {navLinks.map((nav) => (
-                  <li
-                    id={nav.id}
-                    key={nav.id}
-                    className={`${
-                      active === nav.title ? 'text-french' : 'text-eerieBlack'
-                    } text-[88px] font-bold font-arenq 
-                      uppercase tracking-[1px] cursor-pointer`}
-                    onClick={() => {
-                      setToggle(!toggle);
-                      setActive(nav.title);
-                    }}>
-                    <a href={`#${nav.id}`}>{nav.title}</a>
-                  </li>
-                ))}
-              </ul>
+          <div
+            className={`p-7 bg-flashWhite opacity-[0.98] absolute 
+              top-0 w-full h-screen z-10 duration-200 ${toggle ? "left-0" : "left-[100%]"}`}>
+            <div className="flex justify-end mt-2">
+              <img
+                src={close}
+                alt="close"
+                className="w-[22px] h-[22px] object-contain cursor-pointer"
+                onClick={() => setToggle(!toggle)}
+              />
             </div>
-          ) : (
-            <img
-              src={menu}
-              alt="menu"
-              className="w-[34px] h-[34px] object-contain cursor-pointer"
-              onClick={() => setToggle(!toggle)}
-            />
-          )}
+            <ul
+              className="list-none flex flex-col gap-[20px] 
+              items-center justify-end mt-[10rem]">
+              {navLinks.map((nav) => (
+                <li
+                  key={nav.id}
+                  className={`${
+                    active === nav.title ? 'text-french' : 'text-eerieBlack'
+                  } text-[40px] font-bold font-arenq 
+                    uppercase tracking-[1px] cursor-pointer`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(nav.title);
+                  }}>
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <img
+            src={menu}
+            alt="menu"
+            className="w-[34px] h-[34px] object-contain cursor-pointer"
+            onClick={() => setToggle((state) => !state)}
+          />
         </div>
       </div>
     </nav>

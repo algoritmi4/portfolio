@@ -26,14 +26,13 @@ const Hero = () => {
         <div
           className={`absolute inset-0 sm:top-[250px] top-[150px] 
           lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
-          max-w-7xl mx-auto flex flex-row items-start
-          justify-between gap-3`}>
-          <div className="flex flex-col justify-center items-center mt-5 ml-3">
-            <div className="w-5 h-5 rounded-full bg-[#0a0a0a] sm:hidden" />
-            <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
+          max-w-7xl mx-auto flex flex-row items-start gap-3`}>
+          <div className="flex flex-col justify-center items-center mt-5 ml-3 sm:hidden">
+            <div className="w-5 h-5 rounded-full bg-[#0a0a0a]" />
+            <div className="w-1 sm:h-80 h-40 bw-gradient" />
           </div>
 
-          <div>
+          <div className='max-w-[270px] sm:max-w-[450px]'>
             <h1
               className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase whitespace-nowrap`}>
               Hi, I&apos;m<br />
@@ -41,24 +40,19 @@ const Hero = () => {
                 nameLetters.map((el, index) => (
                   <span
                     key={index}
-                    className="text-battleGray sm:text-[90px] text-[50px] font-mova font-extrabold uppercase duration-150 hover:text-eerieBlack cursor-default">
+                    className="text-battleGray font-mova font-extrabold uppercase duration-150 hover:text-eerieBlack cursor-default">
                     {el}
                   </span>
                 ))
               }
             </h1>
-            <p className={`${styles.heroSubText} mt-2`}>
+            <p className={`${styles.heroSubText} mt-1 lg:mt-2`}>
               Front-End Software Developer
             </p>
-            <p className={`text-battleGray font-medium lg:text-[20px] sm:text-[16px] xs:text-[10px] text-[6px] lg:leading-[30px] mt-2 duration-150 hover:text-eerieBlack cursor-default`}>
+            <p className={`text-battleGray font-medium lg:text-[20px] sm:text-[16px] lg:leading-[30px] mt-2 duration-150 hover:text-eerieBlack cursor-default`}>
               Building smart user interfaces and useful interactions, developing rich web applications and seamless web experiences.
             </p>
           </div>
-          <div
-            className="w-screen flex flex-col items-start 
-            justify-center sm:-ml-[3rem] xxs:mt-4"></div>
-
-          <div></div>
         </div>
 
         <div
